@@ -1,2 +1,11 @@
 # GTECH_731_08
-Homework assignment 8 for GTECH 731
+Homework assignment 8 for GTECH 731. The goal of this homework is to get some practice aggregating data.  It's an operation that comes up a lot in GIS applications, and we've touched on a couple of different methods - SQL aggregate functions or Pandas / GeoPandas groupby objects.  It is also possible to do this in pure Python, by constructing a dictionary where each dictionary key is one of the values for which an aggregate value is being calculated. <br />
+
+Please write a python program using one of these three methods to group the records by one discrete or categorical value, and calculate a statistic on the aggregated values. I've uploaded some data for this, but as usual please feel free to use other data if you prefer.  Keep in mind that if you want to work with raster data, it is possible to calculate aggregates similarly using numpy - let me know if you want to work with raster data for this assignment. <br />
+
+For example, if using the tax lot data grouping by zip code, calculate the average lot area of all the lots within the zipcode: <br />
+
+For a pure python approach, you can iterate through the contents of the shape file, for example using shapefile.py, and add a dictionary key for each new zip code you encounter, with the dictionary value being an integer that you increment with each additional instance of that zip code. <br />   
+For Pandas / GeoPandas, you can load the shape file into a data frame, and create a Pandas groupby with zip code as the groupby column. <br />
+For PostGIS, a SQL query with an aggregate function and group by zip code should give you the results.  Be sure to have your code run from Python, even if it is simply submitting a query and getting the results. <br /> 
+If you get through this part, an optional part is it display a visual representation of the results.  For pure python, you can do this by appending calculated value to the zipcode geojson or shapefile, and manually loading the data into QGIS or ArcMap, or a web site that can display geometry. For GeoPandas you can join the grouped data to the zip code data and display and in GeoPandas plot.  For PostGIS you can display the results in QGIS or use code to generate geojson.
